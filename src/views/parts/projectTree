@@ -1,0 +1,286 @@
+<div ng-switch on="chdn.type">
+	<div ng-switch-when="MEC" class="card border-danger text-left" style="margin-top:0; margin-bottom:0;" >
+	<!--<div class="card-header">{{ chdn.name }}x</div> !-->
+
+	<div class="card-body">
+		<div class="row">
+			<div class="col-auto mr-auto" >
+				<h5 ui-tree-handle>{{project.prefix}}-{{chdn.posfix}}_{{chdn.review}}</h5>
+				<md-input-container style="margin-top:0; margin-bottom:0;">
+					<md-icon style="font-size: 15px;" >
+						ENSAMBLE,
+					</md-icon>
+					<label></label>
+						<input ng-model="chdn.name" style="margin-left:50px;"/>
+				</md-input-container>
+
+			</div>
+	  	<div class="col-auto">
+				<div class="btn-group" >
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'MEC')">MEC</button>
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'CBL')">CBL</button>
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'ARN')">ARN</button>
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'PCB')">PCB</button>
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.sprt,'PRT')">PRT</button>
+					<button type="button" class="btn btn-danger" ng-click="rmNode(chdn,project.chdn)"> <i class="fas fa-times"></i></button>
+				</div>
+			</div>
+		</div>
+		<ol ng-if="chdn.chdn" ui-tree-nodes="" ng-model="chdn.chdn">
+
+			<div class="row">
+				<div class="col-md-12">
+					<ul class="list-group">
+	 				 <li class="list-group-item active" ng-if="">
+	 					 <h5 >Partes Especiales</h5>
+
+	 				 </li>
+	 				 <li ng-repeat="part in chdn.sprt" class="list-group-item " style="padding-bottom:0;">
+						 <div class="row">
+						 	<div class="col-auto mr-auto">
+								<h5 >{{project.prefix}}-{{part.posfix}}_{{part.review}}</h5>
+								<md-input-container style="margin-top:0; margin-bottom:0;">
+									<md-icon style="font-size: 15px;" >
+										PARTE,
+									</md-icon>
+									<label></label>
+										<input ng-model="part.name" style="margin-left:20px;"/>
+								</md-input-container>
+
+						 	</div>
+							<div class="col-auto">
+								<div class="btn-group">
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'MEC')" disabled>MEC</button>
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'CBL')" disabled>CBL</button>
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'ARN')" disabled>ARN</button>
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'PCB')" disabled>PCB</button>
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.sprt,'PRT')" disabled>PRT</button>
+									<button type="button" class="btn btn-danger" ng-click="rmNode(chdn,project.chdn)"> <i class="fas fa-times"></i></button>
+								</div>
+							</div>
+						 </div>
+	 				 </li>
+	 		 </ul>
+				</div>
+
+			</div>
+
+			<li ng-repeat="chdn in chdn.chdn" ui-tree-node ng-include="'views/projects/projectTree'" >
+		 </li>
+		</ol>
+	</div>
+
+	</div>
+	<div ng-switch-when="PCB" class="card border-primary text-left" style="margin-top:0; margin-bottom:0;" >
+	<!--<div class="card-header">{{ chdn.name }}x</div> !-->
+
+	<div class="card-body">
+		<div class="row">
+			<div class="col-auto mr-auto" >
+				<h5 ui-tree-handle>{{project.prefix}}-{{chdn.posfix}}_{{chdn.review}}</h5>
+				<md-input-container style="margin-top:0; margin-bottom:0;">
+					<md-icon style="font-size: 15px;" >
+						TARJETA,
+					</md-icon>
+					<label></label>
+						<input ng-model="chdn.name" style="margin-left:35px;"/>
+				</md-input-container>
+			</div>
+	  	<div class="col-auto">
+				<div class="btn-group" >
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'MEC')">MEC</button>
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'CBL')">CBL</button>
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'ARN')">ARN</button>
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'PCB')">PCB</button>
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.sprt,'PRT')">PRT</button>
+					<button type="button" class="btn btn-danger" ng-click="rmNode(chdn,project.chdn)"> <i class="fas fa-times"></i></button>
+				</div>
+			</div>
+		</div>
+		<ol ng-if="chdn.chdn" ui-tree-nodes="" ng-model="chdn.chdn">
+
+			<div class="row">
+				<div class="col-md-12">
+					<ul class="list-group">
+	 				 <li class="list-group-item active" ng-if="">
+	 					 <h5 >Partes Especiales</h5>
+
+	 				 </li>
+	 				 <li ng-repeat="part in chdn.sprt" class="list-group-item ">
+						 <div class="row">
+						 	<div class="col-auto mr-auto">
+								<h5 >{{project.prefix}}-{{part.posfix}}_{{part.review}}</h5>
+								<md-input-container style="margin-top:0; margin-bottom:0;">
+ 								 <md-icon style="font-size: 15px;" >
+ 									 PARTE,
+ 								 </md-icon>
+ 								 <label></label>
+ 									 <input ng-model="part.name" style="margin-left:20px;" />
+ 							 </md-input-container>
+						 	</div>
+							<div class="col-auto">
+								<div class="btn-group">
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'MEC')" disabled>MEC</button>
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'CBL')" disabled>CBL</button>
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'ARN')" disabled>ARN</button>
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'PCB')" disabled>PCB</button>
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.sprt,'PRT')" disabled>PRT</button>
+									<button type="button" class="btn btn-danger" ng-click="rmNode(chdn,project.chdn)"> <i class="fas fa-times"></i></button>
+								</div>
+							</div>
+						 </div>
+
+	 				 </li>
+	 		 </ul>
+				</div>
+
+			</div>
+
+			<li ng-repeat="chdn in chdn.chdn" ui-tree-node ng-include="'views/projects/projectTree'" >
+		 </li>
+		</ol>
+	</div>
+
+	</div>
+	<div ng-switch-when="ARN" class="card border-secondary text-left" style="margin-top:0; margin-bottom:0;" >
+	<!--<div class="card-header">{{ chdn.name }}x</div> !-->
+
+	<div class="card-body">
+		<div class="row">
+			<div class="col-auto mr-auto">
+				<h5 ui-tree-handle >{{project.prefix}}-{{chdn.posfix}}_{{chdn.review}}</h5>
+				<md-input-container style="margin-top:0; margin-bottom:0;">
+					<md-icon style="font-size: 15px;" >
+						ARNÉS,
+					</md-icon>
+					<label></label>
+						<input ng-model="chdn.name" style="margin-left:20px;"/>
+				</md-input-container>
+			</div>
+	  	<div class="col-auto">
+				<div class="btn-group" >
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'MEC')" disabled>MEC</button>
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'CBL')" >CBL</button>
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'ARN')" disabled>ARN</button>
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'PCB')" disabled>PCB</button>
+					<button type="button" class="btn btn-primary" ng-click="addCh(chdn.sprt,'PRT')">PRT</button>
+					<button type="button" class="btn btn-danger" ng-click="rmNode(chdn,project.chdn)"> <i class="fas fa-times"></i></button>
+				</div>
+			</div>
+		</div>
+		<ol ng-if="chdn.chdn" ui-tree-nodes="" ng-model="chdn.chdn">
+
+			<div class="row">
+				<div class="col-md-12">
+					<ul class="list-group">
+	 				 <li class="list-group-item active" ng-if="">
+	 					 <h5 >Partes Especiales</h5>
+
+	 				 </li>
+	 				 <li ng-repeat="part in chdn.sprt" class="list-group-item ">
+						 <div class="row">
+						 	<div class="col-auto mr-auto">
+								<h5 >{{project.prefix}}-{{part.posfix}}_{{part.review}}</h5>
+								<md-input-container style="margin-top:0; margin-bottom:0;">
+ 								 <md-icon style="font-size: 15px;" >
+ 									 PARTE,
+ 								 </md-icon>
+ 								 <label></label>
+ 									 <input ng-model="part.name" style="margin-left:20px;"/>
+ 							 </md-input-container>
+						 	</div>
+							<div class="col-auto">
+								<div class="btn-group">
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'MEC')" disabled>MEC</button>
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'CBL')" disabled>CBL</button>
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'ARN')" disabled>ARN</button>
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'PCB')" disabled>PCB</button>
+									<button type="button" class="btn btn-primary" ng-click="addCh(chdn.sprt,'PRT')" disabled>PRT</button>
+									<button type="button" class="btn btn-danger" ng-click="rmNode(chdn,project.chdn)"> <i class="fas fa-times"></i></button>
+								</div>
+							</div>
+						 </div>
+	 				 </li>
+	 		 </ul>
+				</div>
+
+			</div>
+
+			<li ng-repeat="chdn in chdn.chdn" ui-tree-node ng-include="'views/projects/projectTree'" >
+		 </li>
+		</ol>
+	</div>
+
+</div>
+<div ng-switch-when="CBL" class="card border-success text-left" style="margin-top:0; margin-bottom:0;" >
+<!--<div class="card-header">{{ chdn.name }}x</div> !-->
+
+<div class="card-body">
+	<div class="row">
+		<div class="col-auto mr-auto">
+			<h5 ui-tree-handle>{{project.prefix}}-{{chdn.posfix}}_{{chdn.review}}</h5>
+			<md-input-container style="margin-top:0; margin-bottom:0;">
+				<md-icon style="font-size: 15px;" >
+					CABLE,
+				</md-icon>
+				<label></label>
+					<input ng-model="chdn.name" style="margin-left:20px;"/>
+			</md-input-container>
+		</div>
+		<div class="col-auto">
+			<div class="btn-group" >
+				<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'MEC')" disabled>MEC</button>
+				<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'CBL')" disabled>CBL</button>
+				<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'ARN')" disabled>ARN</button>
+				<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'PCB')" disabled>PCB</button>
+				<button type="button" class="btn btn-primary" ng-click="addCh(chdn.sprt,'PRT')">PRT</button>
+				<button type="button" class="btn btn-danger" ng-click="rmNode(chdn,project.chdn)"> <i class="fas fa-times"></i></button>
+			</div>
+		</div>
+	</div>
+	<ol ng-if="chdn.chdn" ui-tree-nodes="" ng-model="chdn.chdn">
+
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="list-group">
+				 <li class="list-group-item active" ng-if="">
+					 <h5 >Partes Especiales</h5>
+
+				 </li>
+				 <li ng-repeat="part in chdn.sprt" class="list-group-item ">
+					 <div class="row">
+						<div class="col-auto mr-auto">
+							<h5 >{{project.prefix}}-{{part.posfix}}_{{part.review}}</h5>
+							<md-input-container style="margin-top:0; margin-bottom:0;">
+ 							 <md-icon style="font-size: 15px;" >
+ 								 PARTE,
+ 							 </md-icon>
+ 							 <label></label>
+ 								 <input ng-model="part.name" style="margin-left:20px;"/>
+ 						 </md-input-container>
+						</div>
+						<div class="col-auto">
+							<div class="btn-group">
+								<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'MEC')" disabled>MEC</button>
+								<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'CBL')" disabled>CBL</button>
+								<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'ARN')" disabled>ARN</button>
+								<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'PCB')" disabled>PCB</button>
+								<button type="button" class="btn btn-primary" ng-click="addCh(chdn.sprt,'PRT')" disabled>PRT</button>
+								<button type="button" class="btn btn-danger" ng-click="rmNode(chdn,project.chdn)"> <i class="fas fa-times"></i></button>
+							</div>
+						</div>
+					 </div>
+				 </li>
+		 </ul>
+			</div>
+
+		</div>
+
+		<li ng-repeat="chdn in chdn.chdn" ui-tree-node ng-include="'views/projects/projectTree'" >
+	 </li>
+	</ol>
+</div>
+
+</div>
+
+</div>

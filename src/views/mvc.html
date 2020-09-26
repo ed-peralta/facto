@@ -1,0 +1,128 @@
+<div class="card bg-light text-left" ng-controller="mvc-controller">
+  <div class="card-body ">
+    <h5 class="card-title">Control de Modelo-Vista</h5>
+    <p class="card-text">En esta sección podemos ver todos los usuarios del sistema, dar de alta usuarios así como también editar y borrar los usuarios</p>
+    <button  ng-click="add()" class="btn btn-primary">Agregar Modelo-Vista</button>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card bg-light text-left" ng-show="addCard">
+          <div class="card-header">Agregar Modelo-Vista</div>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label >Nombre Modelo-Vista</label>
+                <input type="text" class="form-control" placeholder="Asignar nombre" ng-model="mdVwCtl.Name">
+              </div>
+              <div class="form-group">
+                <label >Padre</label>
+                <input type="text" class="form-control" placeholder="Asignar Id del Modelo-Vista padre" ng-model="mdVwCtl.parent">
+              </div>
+              <div class="form-group">
+                <label >Vista</label>
+                <input type="text" class="form-control" placeholder="Asignar Vista" ng-model="mdVwCtl.view">
+              </div>
+              <div class="form-group">
+                <label >Clase</label>
+                <input type="text" class="form-control" placeholder="Asignar clase" ng-model="mdVwCtl.class">
+              </div>
+              <div class="form-group">
+                <label >Roll</label>
+                <input type="text" class="form-control" placeholder="Asignar roll" ng-model="mdVwCtl.roll">
+              </div>
+              <div class="form-group">
+                <label >Icono</label>
+                <input type="text" class="form-control" placeholder="Asignar nombre" ng-model="mdVwCtl.icon">
+              </div>
+              <div class="form-group">
+                <label >Orden</label>
+                <input type="text" class="form-control" placeholder="Asignar orden" ng-model="mdVwCtl.order">
+              </div>
+
+            </form>
+            <hr>
+            <button  class="btn btn-success" ng-click="insert()">Insertar </button>
+            <button class="btn btn-danger" ng-click="cancelAdd()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card bg-light text-left" ng-show="editCard">
+          <div class="card-header">Editar Modelo-Vista</div>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label >Nombre Modelo-Vista</label>
+                <input type="text" class="form-control" placeholder="Asignar nombre" ng-model="mdVwCtl.Name">
+              </div>
+              <div class="form-group">
+                <label >Padre</label>
+                <input type="text" class="form-control" placeholder="Asignar Id del Modelo-Vista padre" ng-model="mdVwCtl.parent">
+              </div>
+              <div class="form-group">
+                <label >Vista</label>
+                <input type="text" class="form-control" placeholder="Asignar Vista" ng-model="mdVwCtl.view">
+              </div>
+              <div class="form-group">
+                <label >Clase</label>
+                <input type="text" class="form-control" placeholder="Asignar clase" ng-model="mdVwCtl.class">
+              </div>
+              <div class="form-group">
+                <label >Roll</label>
+                <input type="text" class="form-control" placeholder="Asignar roll" ng-model="mdVwCtl.roll">
+              </div>
+              <div class="form-group">
+                <label >Icono</label>
+                <input type="text" class="form-control" placeholder="Asignar nombre" ng-model="mdVwCtl.icon">
+              </div>
+              <div class="form-group">
+                <label >Orden</label>
+                <input type="text" class="form-control" placeholder="Asignar orden" ng-model="mdVwCtl.order">
+              </div>
+
+            </form>
+            <hr>
+            <button class="btn btn-success" ng-click="editRegister()">Guardar</button>
+            <button class="btn btn-danger" ng-click="cancelEdit()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <table class="table table-hover" datatable="ng" dt-instance="dtInstance" dt-options="dtOptions"  datatable="ng">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Padre</th>
+          <th>Vista</th>
+          <th>Clase</th>
+          <th>Roll</th>
+          <th>Icon</th>
+          <th>Orden</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody >
+
+        <tr ng-repeat="register in mdVwCtls">
+          <td>{{register.mvc_id}}</td>
+          <td>{{ register.mvc_name }}</td>
+          <td>{{ register.mvc_parent }}</td>
+          <td>{{ register.mvc_view }}</td>
+          <td>{{ register.mvc_class }}</td>
+          <td>{{ register.mvc_roll }}</td>
+          <td>{{ register.mvc_icon }}</td>
+          <td>{{ register.mvc_order }}</td>
+
+          <td><button class="btn btn-primary" ng-click="edit(register)"><i class="fas fa-edit"></i></button></td>
+          <td><button class="btn btn-danger" ng-click="delete(register.mvc_id)"><i class="fas fa-times"></i></button></td>
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,260 @@
+<div class="card bg-light text-left" >
+  <div class="card-header"><h5 >Detalles del prospecto</h5></div>
+  
+  <div class="card-body " >
+    <div class="container" >
+      <md-switch ng-model="edit" >
+        Editar
+      </md-switch>
+      <div class="row">
+        <div class="col-md-12">
+          <md-input-container class="md-block">
+            <label>Nombre</label>
+            <input type="text" ng-model="prospect.name" ng-disabled="!edit">
+          </md-input-container>
+        </div>
+      </div>  
+      <div class="row">
+        <div class="col-md-6">
+          <md-input-container class="md-block">
+            <label>Apellido paterno</label>
+            <input ng-disabled="!edit" type="text" ng-model="prospect.lastname_paterno">
+          </md-input-container>
+        </div>
+        <div class="col-md-6">
+          <md-input-container class="md-block">
+            <label>Apellido materno</label>
+            <input ng-disabled="!edit" type="text" ng-model="prospect.lastname_materno">
+          </md-input-container>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <md-input-container class="md-block">
+            <label>Email</label>
+            <input ng-disabled="!edit" type="text" ng-model="prospect.mail">
+          </md-input-container>
+        </div>
+        <div class="col-md-4">
+          <md-input-container class="md-block">
+            <label>Teléfono</label>
+            <input ng-disabled="!edit" type="text" ng-model="prospect.phone">
+          </md-input-container>
+        </div>
+        <div class="col-md-4">
+          <md-input-container class="md-block">
+            <label>Ocupación</label>
+            <input ng-disabled="!edit" type="text" ng-model="prospect.ocupation">
+          </md-input-container>
+        </div>
+      </div>
+      <div flex-gt-s>
+        <h6>Fecha de nacimiento</h6>
+        <md-datepicker ng-disabled="!edit" ng-model="prospect.birthday" md-placeholder="Enter date"></md-datepicker>
+      </div>
+      <hr>
+      
+      <md-switch ng-disabled="!edit" ng-model="prospect.civil_state" >
+        Casado
+      </md-switch>
+      <h3 ng-if="prospect.civil_state">Información de cónyugue</h3>
+      
+      <div ng-if="prospect.civil_state" class="card card-body">
+        <div class="row" >
+        
+          <div class="col-md-12">
+            <md-input-container class="md-block">
+              <label>Nombre</label>
+              <input ng-disabled="!edit" type="text" ng-model="prospect.spouse.name">
+            </md-input-container>
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col-md-6">
+            <md-input-container class="md-block">
+              <label>Apellido paterno</label>
+              <input ng-disabled="!edit" type="text" ng-model="prospect.spouse.lastname_paterno">
+            </md-input-container>
+          </div>
+          <div class="col-md-6">
+            <md-input-container class="md-block">
+              <label>Apellido materno</label>
+              <input ng-disabled="!edit" type="text" ng-model="prospect.spouse.lastname_materno">
+            </md-input-container>
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col-md-6">
+            <md-input-container class="md-block">
+              <label>Email</label>
+              <input ng-disabled="!edit" type="text" ng-model="prospect.spouse.mail">
+            </md-input-container>
+          </div>
+          <div class="col-md-6">
+            <md-input-container class="md-block">
+              <label>Teléfono</label>
+              <input ng-disabled="!edit" type="text" ng-model="prospect.spouse.phone">
+            </md-input-container>
+          </div>
+          
+        </div>
+        <div flex-gt-s>
+          <h6>Fecha de nacimiento</h6>
+          <md-datepicker ng-disabled="!edit" ng-model="prospect.spouse.birthday" md-placeholder="Enter date"></md-datepicker>
+        </div>
+      </div>
+      <hr>
+      <md-switch ng-disabled="!edit" ng-model="prospect.is_father" >
+        Padre
+      </md-switch>
+      <h3 ng-if="prospect.is_father" >Información de hijos</h3>
+    
+      <div ng-if="prospect.is_father" class="card card-body" ng-repeat="son in prospect.sons" style="margin: 0%;">
+        <div class="row" >
+        
+          <div class="col-md-4">
+            <md-input-container class="md-block">
+              <label>Nombre</label>
+              <input ng-disabled="!edit" type="text" ng-model="son.name">
+            </md-input-container>
+          </div>
+          <div class="col-md-4">
+            <md-input-container class="md-block">
+              <label>Apellido paterno</label>
+              <input ng-disabled="!edit" type="text" ng-model="son.lastname_paterno">
+            </md-input-container>
+          </div>
+          <div class="col-md-4">
+            <md-input-container class="md-block">
+              <label>Apellido materno</label>
+              <input ng-disabled="!edit" type="text" ng-model="son.lastname_materno">
+            </md-input-container>
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col-md-6">
+            <md-input-container class="md-block">
+              <label>Email</label>
+              <input ng-disabled="!edit" type="text" ng-model="son.mail">
+            </md-input-container>
+          </div>
+          <div class="col-md-6">
+            <md-input-container class="md-block">
+              <label>Teléfono</label>
+              <input ng-disabled="!edit" type="text" ng-model="son.phone">
+            </md-input-container>
+          </div>
+          
+        </div>
+        <div flex-gt-s>
+          <h6>Fecha de nacimiento</h6>
+          <md-datepicker ng-disabled="!edit" ng-model="son.birthday" md-placeholder="Enter date"></md-datepicker>
+        </div>
+      </div>
+      <hr style="margin-bottom: 1em;      margin-top: 2em;">
+      <h3  >Gastos médicos</h3>
+      <br>
+      <div >
+        <div class="row" >
+        
+          <div class="col-md-4">
+            <md-checkbox ng-model="prospect.asma" >
+              Asma
+            </md-checkbox>
+          </div>
+          <div class="col-md-4">
+            <md-checkbox ng-model="prospect.motociclismo" >
+              Motociclismo
+            </md-checkbox>
+          </div>
+          <div class="col-md-4">
+            <md-checkbox ng-model="prospect.diabetes" >
+              Diabetes
+            </md-checkbox>
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col-md-4">
+            <md-checkbox ng-model="prospect.hipertencion" >
+              Hipertención
+            </md-checkbox>
+          </div>
+          <div class="col-md-4">
+            <md-checkbox ng-model="prospect.tiroides" >
+              Tiroides
+            </md-checkbox>
+          </div>
+          <div class="col-md-4">
+            <md-checkbox ng-model="prospect.smoker" >
+              Fumador
+            </md-checkbox>
+          </div>
+          
+        </div>
+      </div>
+      <hr style="margin-bottom: 1em;      margin-top: 1em;">
+      <h3  >Información de referencias</h3>
+      <br>
+      <div class="card card-body" ng-repeat="ref in prospect.references" style="margin: 0%;">
+        <div class="row" >
+        
+          <div class="col-md-4">
+            <md-input-container class="md-block">
+              <label>Nombre</label>
+              <input ng-disabled="!edit" type="text" ng-model="ref.name">
+            </md-input-container>
+          </div>
+          <div class="col-md-4">
+            <md-input-container class="md-block">
+              <label>Apellido paterno</label>
+              <input ng-disabled="!edit" type="text" ng-model="ref.lastname_paterno">
+            </md-input-container>
+          </div>
+          <div class="col-md-4">
+            <md-input-container class="md-block">
+              <label>Apellido materno</label>
+              <input ng-disabled="!edit" type="text" ng-model="ref.lastname_materno">
+            </md-input-container>
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col-md-6">
+            <md-input-container class="md-block">
+              <label>Email</label>
+              <input ng-disabled="!edit" type="text" ng-model="ref.mail">
+            </md-input-container>
+          </div>
+          <div class="col-md-6">
+            <md-input-container class="md-block">
+              <label>Teléfono</label>
+              <input ng-disabled="!edit" type="text" ng-model="ref.phone">
+            </md-input-container>
+          </div>
+          
+        </div>
+      </div>
+      <hr style="margin-bottom: 1em;      margin-top: 2em;">
+     
+      <h3 >Información de inversión</h3>
+    
+      <div>
+        <br>
+       <div class="row">
+         <div class="col-md-12"> 
+          <md-input-container class="md-block" ng-disabled="!edit">
+            <label>Inversión</label>
+            <md-select ng-model="prospect.investment" required>
+              <md-option value="anual">Mensual</md-option>
+              <md-option value="mensual">Anual</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+       </div>
+      </div>  
+
+
+      <button type="submit" class="btn btn-primary" ng-click="update($event)">Guardar</button>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,122 @@
+
+<div class="card bg-light text-left"  >
+  <div class="card-header"><h5 >Crear Proyecto</h5></div>
+  <div class="card-body "style="padding-top:0;">
+    <form>
+      <div ui-tree="treeOptions"  class="card border-secondary text-left" data-drag-enabled="drag" >
+        <!-- <div class="card-header">{{ project.name }}x</div>!-->
+        <div class="card-body">
+
+          <div class="row">
+
+            <div class="col-auto mr-auto">
+
+
+              <h4>{{project.prefix}}-{{project.posfix}}_{{project.review}}</h4>
+              <br>
+              <br>
+              <md-input-container  style="margin-top:0; margin-bottom:0; width:100%;">
+                <label><h5>Nombre del protecto:</h5></label>
+                  <input ng-model="project.name" class="md-block" flex-gt-sm />
+              </md-input-container>
+
+            </div>
+            <div class="col-auto">
+              <div class="btn-group" >
+                <button type="button" class="btn btn-primary" ng-click="addCh(project.chdn,'MEC')">MEC</button>
+                <button type="button" class="btn btn-primary" ng-click="addCh(project.chdn,'CBL')">CBL</button>
+                <button type="button" class="btn btn-primary" ng-click="addCh(project.chdn,'ARN')">ARN</button>
+                <button type="button" class="btn btn-primary" ng-click="addCh(project.chdn,'PCB')">PCB</button>
+                <button type="button" class="btn btn-primary" ng-click="addCh(project.sprt,'PRT')">PRT</button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-auto mr-auto">
+                <md-input-container style=" margin-right:2em;">
+                    <label><h5>Prefijo:</h5> </label>
+                    <input ng-model="project.prefix" />
+                  </md-input-container>
+              </div>
+              <div class="col-auto mr-auto">
+                <md-input-container  style=" margin-right:2em;">
+                    <label><h5>Versión:(1-9)</h5> </label>
+                    <input ng-model="project.version" required ng-pattern="/^[1-9]/" md-maxlength="1  " />
+                  </md-input-container>
+              </div>
+            <div class="col-auto">
+              <button class="btn btn-success" ng-click="updtProj()"><i class="fas fa-sync-alt"></i> Actualizar</button>
+            </div>
+          </div>
+          <md-switch ng-model="drag" style="margin-top:0;">
+            Arrastrarts
+          </md-switch>
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="list-group" >
+                <li class="list-group-item active" ng-if="">
+                  <h5 >Partes Especiales</h5>
+
+                </li>
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col-auto mr-auto">
+                      <h5 >{{project.prefix}}-{{project.icd.assambly}}</h5>
+                      <small class="text-muted">ICD, {{project.name}}</small>
+                    </div>
+                    <div class="col-auto">
+                      <div class="btn-group" >
+                        <button type="button" class="btn btn-primary" ng-click="addCh(project.chdn,'MEC')" disabled>MEC</button>
+                        <button type="button" class="btn btn-primary" ng-click="addCh(project.chdn,'CBL')" disabled>CBL</button>
+                        <button type="button" class="btn btn-primary" ng-click="addCh(project.chdn,'ARN')" disabled>ARN</button>
+                        <button type="button" class="btn btn-primary" ng-click="addCh(project.chdn,'PCB')" disabled>PCB</button>
+                        <button type="button" class="btn btn-primary" ng-click="addCh(project.sprt,'PRT')" disabled>PRT</button>
+                        <button type="button" class="btn btn-danger" ng-click="rmPart(project.sprt)" disabled> <i class="fas fa-times"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li ng-repeat="part in sprt" class="list-group-item " style="padding-bottom:0;">
+                  <div class="row">
+                    <div class="col-auto mr-auto">
+                      <h5 >{{project.prefix}}-{{part.posfix}}_{{part.review}}</h5>
+                        <md-input-container style="margin-top:0; margin-bottom:0;">
+                          <md-icon style="font-size: 15px;" >
+                            {{part.type}},
+                          </md-icon>
+                          <label></label>
+                            <input ng-model="part.name" />
+                        </md-input-container>
+
+                    </div>
+                    <div class="col-auto">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-primary" ng-click="addCh(project.chdn,'MEC')" disabled>MEC</button>
+                        <button type="button" class="btn btn-primary" ng-click="addCh(project.chdn,'CBL')" disabled>CBL</button>
+                        <button type="button" class="btn btn-primary" ng-click="addCh(project.chdn,'ARN')" disabled>ARN</button>
+                        <button type="button" class="btn btn-primary" ng-click="addCh(project.chdn,'PCB')" disabled>PCB</button>
+                        <button type="button" class="btn btn-primary" ng-click="addCh(project.sprt,'PRT')" disabled>PRT</button>
+                        <button type="button" class="btn btn-danger" ng-click="rmPart(project.sprt)" > <i class="fas fa-times"></i></button>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+          <br>
+          <ol ui-tree-nodes="" ng-model="children" id="tree-root" ng-if="project.chdn">
+            <li class="list-group-item active" ng-if="">
+              <h5 >Listas de Partes</h5>
+
+            </li>
+            <li  ng-repeat="chdn in children" ui-tree-node ng-include="'views/projects/projectTree'"> </li>
+          </ol>
+        </div>
+      <button type="submit" class="btn btn-primary" ng-click="insert()">Submit</button>
+    </form>
+  </div>
+</div>

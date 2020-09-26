@@ -1,0 +1,41 @@
+<md-dialog style="width:100em; height:auto;">
+  <form ng-cloak>
+    <md-dialog-content>
+    <div class="md-dialog-content">
+    <h2>Editar Proveedor</h2>
+    <br>
+    <p>
+	<md-input-container class="md-block">
+		<label>Cantidad</label>
+		<input ng-model="part.part_description">
+	</md-input-container>
+
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Fabricante</label>
+				<md-select name="Fabricante" ng-model="part.part_manufacturer" required>
+					<md-option value="{{manufacturer.manufacturer_name}}" ng-repeat="manufacturer in manufacturers">{{manufacturer.manufacturer_name}}</md-option>
+        </md-select>
+		</md-input-container>
+
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Notas</label>
+			<input ng-model="part.part_number_provider">
+		</md-input-container>
+
+
+
+  </p>
+  </div>
+  </md-dialog-content>
+  <md-dialog-actions layout="row">
+
+    <md-button ng-click="cancel()">
+     Cancelar
+    </md-button>
+    <md-button ng-click="save(part.part_id)">
+      Guardar
+    </md-button>
+  </md-dialog-actions>
+
+</form>
+</md-dialog>

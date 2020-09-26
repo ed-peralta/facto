@@ -1,0 +1,48 @@
+<div class="card bg-light text-left" >
+  <!--<div class="card-header">Control de usuarios</div> -->
+  <div class="card-body ">
+    <h5 class="card-title">Control de usuarios</h5>
+    <p class="card-text">En esta sección podemos ver todos los usuarios del sistema, dar de alta usuarios así como también editar y borrar los usuarios</p>
+    <md-button class="md-primary md-raised"  href="#!projects/project_c">
+      Agregar proyecto
+    </md-button>
+		<div  style="display:flex;" class="btn-group" role="group" aria-label="Basic example">
+		  <a style="flex:1;" type="button"href="#!projects/project_c" class="btn btn-primary">Agregar proyecto</a>
+		  <a style="flex:1;" type="button" class="btn btn-primary" href="">Importar Proyecto</a>
+		  <button style="flex:1;" type="button" class="btn btn-primary">Agregar Tarjeta</button>
+		</div>
+    <div ng-if="status" id="status">
+    <b layout="row" layout-align="center center" class="md-padding">
+      {{status}}
+    </b>
+  </div>
+    <hr>
+    <table class="table  table-hover " dt-instance="dtInstance" dt-options="dtOptions"  datatable="ng" >
+      <thead>
+        <tr>
+
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Última modificación</th>
+          <th>Herramientas</th>
+					<th>Clonar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="proj in projects" >
+          <td>{{ proj.tree_id }}</td>
+          <td>{{ proj.tree_name }}</td>
+
+          <td>{{ proj.tree_timestamp }}</td>
+          <td> <button type="button" class="btn btn-dark details-control"> <i class="fas fa-wrench"></i> </button> </td>
+					<td><button style="flex:1;" class="btn btn-info" ng-click="showConfirmClone($event,proj.tree_id)"><i class="fas fa-clone"></i> </button></td>
+          <td><button style="flex:1;" class="btn btn-danger" ng-click="showConfirm($event,proj.tree_id)"><i class="fas fa-times"></i></button></td>
+        <!--  <td><button class="btn btn-primary" ng-click="view(us)"><i class="fas fa-eye"></i></span></button></td>-->
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+
+  </div>
+</div>

@@ -1,0 +1,27 @@
+
+<div class="card bg-light text-left" >
+  <div class="card-header"><h5 >Editar usuario</h5></div>
+  <div class="card-body ">
+    <h4 class="card-title">{{user.user_name}} {{user.user_lastname}}</h4>
+    <h5 class="card-text text-muted">{{user.user_mail}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <hr>
+    <form>
+      <div class="form-group">
+        <label >Nombre:</label>
+        <input ng-model="user.user_name" type="text" class="form-control" placeholder="">
+      </div>
+      <div class="form-group">
+        <label >Apellidos:</label>
+        <input ng-model="user.user_lastname" type="text" class="form-control" placeholder="">
+      </div>
+      <div class="form-group">
+        <label >Email address:{{user.user_mail}}</label>
+        <input ng-model="user.user_mail" type="email" class="form-control" placeholder="ejemplo@rocektmail.com">
+      </div>
+
+      <button type="submit" class="btn btn-danger" ng-click="cancelEdit()">Cancelar</button>
+      <button type="submit" class="btn btn-success" ng-click="editUser()">Guardar</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<md-dialog style="width: 600px; height:700px;">
+  <form ng-cloak>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h2>Editar prospecto</h2>
+				<br>
+        <p>
+					<md-input-container class="md-block">
+		        <label>Nombre:</label>
+		        <input required md-no-asterisk ng-model="prospect.prospect_name">
+		        <div ng-messages="projectForm.description.$error">
+		          <div ng-message="required">This is required.</div>
+
+		        </div>
+		      </md-input-container>
+					<md-input-container class="md-block">
+		        <label>Dirección:</label>
+		        <input  required md-no-asterisk ng-model="prospect.prospect_address">
+		        <div ng-messages="projectForm.description.$error">
+		          <div ng-message="required">This is required.</div>
+
+		        </div>
+		      </md-input-container>
+					<md-input-container class="md-block">
+		        <label>Teléfono:</label>
+		        <input  required md-no-asterisk ng-model="prospect.prospect_phone">
+		        <div ng-messages="projectForm.description.$error">
+		          <div ng-message="required">This is required.</div>
+
+		        </div>
+		      </md-input-container>
+					<md-input-container class="md-block">
+		        <label>Mail:</label>
+		        <input  required md-no-asterisk ng-model="prospect.prospect_mail">
+		        <div ng-messages="projectForm.description.$error">
+		          <div ng-message="required">This is required.</div>
+
+		        </div>
+		     
+		      </md-input-container>
+				</p>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+
+      <md-button ng-click="cancel()">
+       Cancelar
+      </md-button>
+      <md-button ng-click="saveprospect(prospect.prospect_id)">
+        Guardar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

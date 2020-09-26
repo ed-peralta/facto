@@ -1,0 +1,41 @@
+<div class="card bg-light text-left" >
+  <!--<div class="card-header">Control de usuarios</div> -->
+  <div class="card-body ">
+    <h5 class="card-title">Control de usuarios</h5>
+    <p class="card-text">En esta sección podemos ver todos los usuarios del sistema, dar de alta usuarios así como también editar y borrar los usuarios</p>
+    <a href="#!users/user_c" class="btn btn-primary">Agregar usuario</a>
+    <md-button class="md-primary md-raised" ng-click="showTabDialog($event)" id="dialog">
+      Tab Dialog
+    </md-button>
+    <div ng-if="status" id="status">
+    <b layout="row" layout-align="center center" class="md-padding">
+      {{status}}
+    </b>
+  </div>
+    <hr>
+    <table class="table  table-hover " dt-instance="dtInstance" dt-options="dtOptions"  datatable="ng" >
+      <thead>
+        <tr>
+
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Correo</th>
+          <th></th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="us in users | filter: filtro | orderBy:orby" >
+          <td class="details-control">{{ us.user_id }}</td>
+          <td>{{ us.user_name }}</td>
+          <td>{{ us.user_lastname }}</td>
+          <td>{{ us.user_mail }}</td>
+        <!--  <td><button class="btn btn-secondary" ng-click="view(us)"><i class="fas fa-eye"></i></span></button></td>-->
+          <td><a class="btn btn-primary" href="#!users/user_u/{{us}}"><i class="fas fa-edit"></i></a></td>
+          <td><button class="btn btn-danger" ng-click="delete(us.user_id)"><i class="fas fa-times"></i></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

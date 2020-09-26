@@ -1,0 +1,117 @@
+<md-input-container>
+	<label>Proyecto Fuente</label>
+	<md-select ng-model="option" md-selected-text="getSelectedText()">
+		<md-option><em>None</em></md-option>
+		<md-option value="{{p.tree_id}}" ng-repeat="p in projects" >
+			{{p.tree_name}}
+		</md-option>
+	</md-select>
+</md-input-container>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card bg-light text-left" >
+		  <div class="card-header"><h5 >Proyecto Fuente</h5></div>
+			 <div class="card-body " >
+			    <form>
+			      <div ui-tree="treeOptions"  class="card border-secondary text-left" data-clone-enabled="true" data-nodrop-enabled="true"  style="margin-top:0px;" >
+			        <!-- <div class="card-header">{{ project.name }}x</div>!-->
+			        <div class="card-body">
+			          <div class="row">
+			            <div class="col-auto ">
+			              <h4>{{projclone.prefix}}-{{projclone.posfix}}_{{projclone.review}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
+										<h5> <small>{{projclone.name}}</small> </h5>
+			            </div>
+			          </div>
+
+			          <div class="row">
+			            <div class="col-md-12">
+			              <ul class="list-group" >
+			                <li class="list-group-item">
+			                  <div class="row">
+			                    <div class="col-auto mr-auto">
+			                      <h5 >{{projclone.prefix}}-{{projclone.icd.assambly}}</h5>
+			                      <small class="text-muted">ICD, {{projclone.name}}</small>
+			                    </div>
+
+			                  </div>
+			                </li>
+			                <li ng-repeat="part in projclone.sprt" class="list-group-item " style="padding-bottom:0;" disabled={{part.disabled}}>
+			                  <div class="row">
+			                      <h5 >{{projclone.prefix}}-{{part.posfix}}_{{part.review}}</h5>
+														<h6> {{part.type}},  {{part.name}}</h6>
+			                  </div>
+			                </li>
+			              </ul>
+			            </div>
+			          </div>
+			          <br>
+			          <ol ui-tree-nodes="" ng-model="projclone.chdn" id="tree-root" ng-if="projclone.chdn">
+			            <li  ng-repeat="chdn in projclone.chdn" ui-tree-node ng-include="'views/projects/tree_import_clone'"> </li>
+			          </ol>
+			        </div>
+			        <br>
+			      <button id="confirmButton" type="submit" class="btn btn-primary bottom" style="margin:2px 2px;"  ng-click="update()"><i class="fas fa-save"></i>&nbsp;Guardar</button>
+			    </form>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="card bg-light text-left" >
+		  <div class="card-header">
+				<h5 >Proyecto Destino  <button class="btn btn-success" ng-click="updtProj()"><i class="fas fa-sync-alt"></i> Actualizar</button></h5>
+			</div>
+			 <div class="card-body " >
+			    <form>
+			      <div ui-tree="treeOptions"  class="card border-secondary text-left" data-clone-enabled="true" style="margin-top:0px;" >
+			        <!-- <div class="card-header">{{ project.name }}x</div>!-->
+			        <div class="card-body">
+			          <div class="row">
+			            <div class="col-auto ">
+			              <h4>{{project.prefix}}-{{project.posfix}}_{{project.review}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
+										<h5> <small>{{project.name}}</small> </h5>
+			            </div>
+			          </div>
+
+			          <div class="row">
+			            <div class="col-md-12">
+			              <ul class="list-group" >
+			                <li class="list-group-item active" ng-if="">
+			                  <h5 >Partes Especiales</h5>
+
+			                </li>
+			                <li class="list-group-item">
+			                  <div class="row">
+			                    <div class="col-auto mr-auto">
+			                      <h5 >{{project.prefix}}-{{project.icd.assambly}}</h5>
+			                      <small class="text-muted">ICD, {{project.name}}</small>
+			                    </div>
+
+			                  </div>
+			                </li>
+			                <li ng-repeat="part in project.sprt" class="list-group-item " style="padding-bottom:0;" disabled={{part.disabled}}>
+			                  <div class="row">
+			                      <h5 >{{project.prefix}}-{{part.posfix}}_{{part.review}}</h5>
+														<h6> {{part.type}},  {{part.name}}</h6>
+			                  </div>
+			                </li>
+			              </ul>
+			            </div>
+			          </div>
+			          <br>
+			          <ol ui-tree-nodes="" ng-model="project.chdn" id="tree-root" ng-if="project.chdn">
+			            <li class="list-group-item active" ng-if="">
+			              <h5 >Listas de Partes</h5>
+			            </li>
+			            <li  ng-repeat="chdn in project.chdn" ui-tree-node ng-include="'views/projects/tree_import'"> </li>
+			          </ol>
+			        </div>
+			        <br>
+			      <button id="confirmButton" type="submit" class="btn btn-primary bottom" style="margin:2px 2px;"  ng-click="update()"><i class="fas fa-save"></i>&nbsp;Guardar</button>
+			    </form>
+			  </div>
+			</div>
+		</div>
+
+	</div>
+</div>

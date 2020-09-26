@@ -1,0 +1,38 @@
+ {
+        "name": "",
+        "lastname_materno": "",
+        "lastname_paterno": "",
+        "mail": "",
+        "phone": "",
+        "investment": "",
+        "birthday": "",
+        "ocupation": "",
+        "is_father": false,
+        "civil_state": false,
+        "spouse": {
+            "name": "",
+            "lastname_materno": "",
+            "lastname_paterno": "",
+            "mail": "",
+            "phone": "",
+            "birthday": ""
+        },
+        "retirement":false,
+        "education":false,
+        "temporary":false,
+        "orvi":false,
+        "health_data": {
+            "smoker": false,
+            "asma": false,
+            "motociclismo": false,
+            "diabetes": false,
+            "hipertencion": false,
+            "tiroides": false
+        },
+        "sons": [],
+        "references": [],
+        "type": "",
+        "refereced_by": "",
+        "smoker": true,
+        "tiroides": true
+    }

@@ -1,0 +1,39 @@
+<md-dialog style="width: 600px;">
+  <form ng-cloak>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h2>Editar Magnitud</h2>
+				<br>
+
+        <p>
+					<md-input-container class="md-block">
+		        <label>Nombre:</label>
+		        <input required md-no-asterisk ng-model="magnitude.magnitude_name">
+		        <div ng-messages="projectForm.description.$error">
+		          <div ng-message="required">This is required.</div>
+		          <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+		        </div>
+		      </md-input-container>
+					<md-input-container class="md-block">
+		        <label>Descripción:</label>
+		        <input  required md-no-asterisk ng-model="magnitude.magnitude_description">
+		        <div ng-messages="projectForm.description.$error">
+		          <div ng-message="required">This is required.</div>
+		          <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+		        </div>
+		      </md-input-container>
+				</p>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+
+      <md-button ng-click="cancel()">
+       Cancelar
+      </md-button>
+      <md-button ng-click="saveMagnitude(magnitude.magnitude_id)">
+        Guardar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

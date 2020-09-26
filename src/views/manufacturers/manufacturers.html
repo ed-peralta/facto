@@ -1,0 +1,40 @@
+<div class="card bg-light text-left" >
+  <!--<div class="card-header">Control de usuarios</div> -->
+  <div class="card-body ">
+    <h5 class="card-title">Catálogo de Fabricantes</h5>
+		<md-button class="md-primary md-raised" ng-click="showPrompt($event)" id="dialog">
+    	Agregar Fabricante
+    </md-button>
+    <div ng-if="status" id="status">
+    <b layout="row" layout-align="center center" class="md-padding">
+      {{status}}
+    </b>
+  </div>
+    <hr>
+    <table class="table  table-hover " dt-instance="dtInstance" dt-options="dtOptions"  datatable="ng" >
+      <thead>
+        <tr>
+
+          <th>Id</th>
+          <th>Nombre</th>
+
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="manufacturer in manufacturers" >
+          <td class="details-control">{{ manufacturer.manufacturer_id }}</td>
+          <td>{{ manufacturer.manufacturer_name }}</td>
+
+
+        <!--  <td><button class="btn btn-secondary" ng-click="view(us)"><i class="fas fa-eye"></i></span></button></td>-->
+					<td><button class="btn btn-primary" ng-click="showPrompt($event,manufacturer.manufacturer_name,manufacturer.manufacturer_id)"><i class="fas fa-edit" ></i></button></td>
+					<td><button class="btn btn-danger"  ng-click="showConfirm($event,manufacturer.manufacturer_id)" ><i class="fas fa-times"></i></button></td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+
+  </div>
+</div>

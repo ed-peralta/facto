@@ -1,0 +1,28 @@
+
+<div class="card bg-light text-left" >
+  <div class="card-header"><h5 >Crear usuario</h5></div>
+  <div class="card-body ">
+    {{ID}}
+    <form>
+      <div class="form-group">
+        <label >Nombre:{{user.name}}</label>
+        <input ng-model="user.name" type="text" class="form-control" placeholder="">
+      </div>
+      <div class="form-group">
+        <label >Apellidos:{{user.lastname}}</label>
+        <input ng-model="user.lastname" type="text" class="form-control" placeholder="">
+      </div>
+      <div class="form-group">
+        <label >Email address:</label>
+        <input type="email" class="form-control" placeholder="ejemplo@rocektmail.com">
+        <small  class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label >Password:</label>
+        <input type="password" class="form-control" placeholder="Password">
+      </div>
+
+      <button type="submit" class="btn btn-primary" ng-click="insert()">Submit</button>
+    </form>
+  </div>
+</div>

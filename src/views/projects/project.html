@@ -1,0 +1,149 @@
+<div class="card bg-light text-left" >
+  <!--<div class="card-header">Control de usuarios</div> -->
+  <div class="card-body ">
+    <h5 class="card-title">Detalles del proyecto</h5>
+    <p class="card-text">En esta sección podemos ver todos los usuarios del sistema, dar de alta usuarios así como también editar y borrar los usuarios</p>
+    <a href="#!projects/project_c" class="btn btn-primary">Agregar proyecto</a>
+    <md-button class="md-primary md-raised" ng-click="showTabDialog($event)" id="dialog">
+      Tab Dialog
+    </md-button>
+    <div ng-if="status" id="status">
+    <b layout="row" layout-align="center center" class="md-padding">
+      {{status}}
+    </b>
+  </div>
+    <hr>
+		<div class="card border-dark ">
+			<div class="card-body">
+				<h5 class="card-title">Listas de Partes</h5>
+				<div class="table-responsive">
+					<table class="table table-hover" dt-instance="dtInstance" dt-options="dtOptions" datatable="ng">
+						<thead>
+							<tr>
+								<th>Partida</th>
+								<th>Tipo</th>
+			          <th>Ensamble</th>
+			          <th>Descripción</th>
+								<th>Notas</th>
+								<th>Revisión</th>
+								<th>precio</th>
+                <th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="lp in project.chdn">
+								<td>{{$index+1}}</td>
+								<td>{{lp.type}}</td>
+								<td>{{project.prefix}}{{lp.posfix}}</td>
+								<td>{{lp.name}}</td>
+								<td>{{lp.notes}}</td>
+								<td>{{lp.review}}</td>
+								<th>{{lp.price | currency }}</th>
+                <th><a class="btn btn-info" href="#!projects/project/{{projId}}/{{lp}}"><i class="fas fa-eye"></i></a></th>
+              </tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+		<div class="card border-primary ">
+			<div class="card-body">
+				<h5 class="card-title">Partes Especiales</h5>
+				<div class="table-responsive">
+					<table class="table table-hover" dt-instance="dtInstance" dt-options="dtOptions" datatable="ng">
+						<thead>
+							<tr>
+								<th>Partida</th>
+								<th>Tipo</th>
+			          <th>Ensamble</th>
+			          <th>Descripción</th>
+								<th>Notas</th>
+								<th>Revisión</th>
+								<th>precio</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="ps in project.sprt">
+								<td></td>
+								<td>{{ps.type}}</td>
+								<td>{{ps.posfix}}</td>
+								<td>{{ps.description}}</td>
+								<td>{{ps.notes}}</td>
+								<td>{{ps.review}}</td>
+								<th>{{ps.price}}</th>
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+		<div class="card border-success ">
+			<div class="card-body">
+				<h5 class="card-title">Partes Comerciales</h5>
+				<md-button class="md-primary md-raised" ng-click="showUpdateDialog($event,projId,project)" id="dialog">
+		      Agregar
+		    </md-button>
+				<div class="table-responsive">
+					<table class="table table-hover" dt-instance="dtInstance" dt-options="dtOptions" datatable="ng">
+						<thead>
+							<tr>
+								<th>Partida</th>
+								<th>Tipo</th>
+			          <th>Ensamble</th>
+			          <th>Descripción</th>
+								<th>Notas</th>
+								<th>Revisión</th>
+								<th>precio</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="cp in project.cprt">
+								<td></td>
+								<td>{{cp.type}}</td>
+								<td>{{cp.posfix}}</td>
+								<td>{{cp.description}}</td>
+								<td>{{cp.notes}}</td>
+								<td>{{cp.review}}</td>
+								<th>{{cp.price}}</th>
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+
+
+		<!--
+    <table class="table  table-hover " dt-instance="dtInstance" dt-options="dtOptions"  datatable="ng" >
+      <thead>
+        <tr>
+
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Fecha Alta</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="proj in projects" >
+          <td class="details-control">{{ proj.tree_id }}</td>
+          <td>{{ proj.tree_name }}</td>
+
+          <td>{{ proj.tree_timestamp }}</td>
+
+         <td><button class="btn btn-secondary" ng-click="view(us)"><i class="fas fa-eye"></i></span></button></td>
+          <td><a class="btn btn-primary" href="#!projects/project_u/{{proj.tree_id}}"><i class="fas fa-edit"></i></a></td>
+          <td><button class="btn btn-danger" ng-click="delete(proj.tree_id)"><i class="fas fa-times"></i></button></td>
+        </tr>
+      </tbody>
+    </table> -->
+    <hr>
+
+  </div>
+</div>

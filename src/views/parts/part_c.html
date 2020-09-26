@@ -1,0 +1,77 @@
+<div class="container" style="padding-top:1em; padding-bottom:1em;">
+
+	<md-input-container class="md-block">
+		<label>Descripción</label>
+		<input ng-model="part.part_description">
+	</md-input-container>
+	<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Fabricante</label>
+				<md-select name="Fabricante" ng-model="part.part_manufacturer" required>
+					<md-option value="{{manufacturer.manufacturer_name}}" ng-repeat="manufacturer in manufacturers">{{manufacturer.manufacturer_name}}</md-option>
+        </md-select>
+		</md-input-container>
+
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Número de parte Fabricante</label>
+			<input ng-model="part.part_number_manufacturer">
+		</md-input-container>
+	</div>
+	<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Proveedor</label>
+			<md-select name="Proveedor" ng-model="part.part_provider" required>
+				<md-option value="{{provider.provider_name}}" ng-repeat="provider in providers">{{provider.provider_name}}</md-option>
+			</md-select>
+		</md-input-container>
+
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Número de parte Proveedor</label>
+			<input ng-model="part.part_number_provider">
+		</md-input-container>
+	</div>
+	<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Unidad</label>
+			<md-select name="Unidad" ng-model="part.part_unit" required>
+				<md-option value="{{unit.unit_name}}" ng-repeat="unit in units">{{unit.unit_name}}</md-option>
+			</md-select>
+		</md-input-container>
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Magnitud</label>
+			<md-select name="Magnitud" ng-model="part.part_magnitude" required>
+				<md-option value="{{magnitude.magnitude_description}}" ng-repeat="magnitude in magnitudes">{{magnitude.magnitude_name}}</md-option>
+		</md-select>
+		</md-input-container>
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Valor</label>
+			<input ng-model="part.part_value">
+		</md-input-container>
+	</div>
+	<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Moneda</label>
+			<md-select name="Moneda" ng-model="part.part_coin" required>
+				<md-option value="{{coin.coin_name}}" ng-repeat="coin in coins">{{coin.coin_name}}</md-option>
+
+			</md-select>
+		</md-input-container>
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Precio</label>
+			<input ng-model="part.part_price">
+		</md-input-container>
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Imagen</label>
+			<input  name="file_array" type="file"  />
+		</md-input-container>
+	</div>
+	<div class="row ">
+		<div class="col-auto mr-auto">
+			<button class="btn btn-outline-danger" ng-click="cancelEdit()" >Cancelar</button>
+		</div>
+		<div class="col-auto">
+			<button class="btn btn-outline-success" ng-click="insertPart()" >Guradar</button>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,40 @@
+<div class="card bg-light text-left" >
+    <!--<div class="card-header">Control de usuarios</div> -->
+    <div class="card-body ">
+      <h5 class="card-title">Prospectos</h5>
+      <a href="#!prospects/prospect_create" class="btn btn-primary">Agregar prospecto</a>
+      
+      <div ng-if="status" id="status">
+      <b layout="row" layout-align="center center" class="md-padding">
+        {{status}}
+      </b>
+    </div>
+      <hr>
+      <table class="table  table-hover " dt-instance="dtInstance" dt-options="dtOptions"  datatable="ng" >
+        <thead>
+          <tr>
+  
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Corrreo / teléfono</th>
+            
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="prospect in prospects" >
+                <td class="details-control">{{ prospect.person_id }}</td>
+                <td>{{ prospect.person_data.name }} <br> <small>{{ prospect.person_data.lastname_paterno }} {{ prospect.person_data.lastname_materno }}</small></td>
+                <td>{{ prospect.person_data.mail }} <br> <small>  {{ prospect.person_data.phone }} </small>  </td>
+                
+                <td><a class="btn btn-primary" href="#!prospects/prospect_detail/{{prospect.person_id}}" class="edit"><i class="fas fa-eye" ></i></a></td>
+                <td><button class="btn btn-danger"  ng-click="showConfirm($event,prospect.person_id)" ><i class="fas fa-times"></i></button></td>
+            </tr>
+        </tbody>
+      </table>
+      <hr>
+  
+    </div>
+  </div>
+  

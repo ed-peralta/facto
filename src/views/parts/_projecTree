@@ -1,0 +1,45 @@
+<div class="card bg-light text-left" >
+<!--<div class="card-header">{{ chdn.name }}x</div> !-->
+
+<div class="card-body">
+	<div class="row">
+		<div class="col-auto mr-auto" ui-tree-handle>
+			<h4>AAAAV300</h4>
+			<h5 >{{chdn.type}}, {{ chdn.name }}	</h5>
+
+		</div>
+  	<div class="col-auto">
+			<div class="btn-group" >
+				<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'MEC')">MEC</button>
+				<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'CBL')">CBL</button>
+				<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'ARN')">ARN</button>
+				<button type="button" class="btn btn-primary" ng-click="addCh(chdn.chdn,'PCB')">PCB</button>
+				<button type="button" class="btn btn-primary" ng-click="addCh(chdn.sprt,'PRT')">PRT</button>
+				<button type="button" class="btn btn-danger"> <i class="fas fa-times"></i></button>
+			</div>
+		</div>
+	</div>
+	<ol ng-if="chdn.chdn" ui-tree-nodes="" ng-model="chdn.chdn">
+
+
+		 <div class="list-group">
+		  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+		    <div class="d-flex w-100 justify-content-between">
+		      <h5 class="mb-1">Partes Especiales</h5>
+		    </div>
+		  </a>
+			<a href="#" ng-repeat="part in chdn.sprt" class="list-group-item list-group-item-action flex-column align-items-start">
+		    <div class="d-flex w-100 justify-content-between">
+		      <h5 class="mb-1">AX32</h5>
+		      <small class="text-muted">3 days ago</small>
+		    </div>
+		    <p class="mb-1">{{part.name}}</p>
+		    <small class="text-muted">{{part.type}}</small>
+		  </a>
+		</div>
+			<li ng-repeat="chdn in chdn.chdn" ui-tree-node ng-include="'views/projects/projectTree'">
+			</li>
+	</ol>
+</div>
+
+</div>

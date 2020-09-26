@@ -1,0 +1,51 @@
+<div class="card bg-light text-left" >
+  <!--<div class="card-header">Control de usuarios</div> -->
+  <div class="card-body ">
+    <h5 class="card-title">Catálogo de Partes</h5>
+    <p class="card-text">En esta sección podemos ver todos los usuarios del sistema, dar de alta usuarios así como también editar y borrar los usuarios</p>
+    <md-button href="#!parts/part_create" class="md-primary md-raised">Agregar parte</md-button>
+
+    <div ng-if="status" id="status">
+    <b layout="row" layout-align="center center" class="md-padding">
+      {{status}}
+    </b>
+  </div>
+    <hr>
+		<div class="table-responsive">
+
+	    <table class="table  table-hover " dt-instance="dtInstance" dt-options="dtOptions"  datatable="ng" >
+	      <thead>
+	        <tr>
+
+	          <th>Id</th>
+						<th></th>
+
+	          <th>Descripción</th>
+	          <th>NP Fabricante</th>
+						<th>NP Proveedor</th>
+	          <th>Actualizar</th>
+	          <th>Editar</th>
+	          <th>Eliminar</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <tr ng-repeat="part in parts" >
+	          <td class="details-control">{{ part.part_id }}</td>
+						<td class="details-control">
+							<img ng-if="part.image_show == 1" src="data:{{part.image_mime}};base64,{{part.image_data}}" width="50px" height="50px"/>
+							<p ng-if="part.image_show== 0">no image</p>
+						</td>
+						<td class="details-control">{{ part.part_description }}</td>
+						<td>{{ part.part_number_manufacturer }}</td>
+						<td>{{ part.part_number_provider }}</td>
+	          <td> <button class="btn btn-success" ng-click="showPrompt($event,part)"><i class="fas fa-sync-alt"></i></button></td>
+	          <td><button class="btn btn-primary" ng-click="showTabDialog($event,part.part_id)" id="dialog" ><i class="fas fa-edit"></i></button></td>
+						<td><button class="btn btn-danger"  ng-click="showConfirm($event,part.part_id)" ><i class="fas fa-times"></i></button></td>
+				  </tr>
+	      </tbody>
+	    </table>
+		</div>
+    <hr>
+
+  </div>
+</div>

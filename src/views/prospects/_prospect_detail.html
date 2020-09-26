@@ -1,0 +1,251 @@
+<div class="card bg-light text-left" >
+  <div class="card-header"><h5 >Crear prospecto</h5></div>
+  <div class="card-body ">
+    <div class="container">
+
+    <form>
+      <center><h1>Información personal</h1></center>
+      <div class="row form-group">
+        <div class="col">
+          <label >Nombre:</label>
+          <input ng-model="prospect.name" type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col">
+          <label >Apellido paterno:</label>
+          <input ng-model="prospect.lastname_paterno" type="text" class="form-control" placeholder="">
+        </div>
+        <div class="col">
+          <label >Apellido materno:</label>
+          <input ng-model="prospect.lastname_materno" type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col">
+          <label >Email :</label>
+          <input ng-model="prospect.mail" type="email" class="form-control" placeholder="ejemplo@rocektmail.com">
+        </div>
+        <div class="col">
+          <label >Teléfono:</label>
+          <input ng-model="prospect.phone" type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col">
+          <label >Ocupación:</label>
+          <input ng-model="prospect.ocupation" type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+      <div class="form-group">
+        <label >Fecha de nacimiento: {{ prospect.birthday | date:shortDate }}</label>
+
+        <center><md-datepicker ng-model="prospect.birthday"></md-datepicker></center>
+      </div>
+      
+      <div class="row form-group">
+        <div class=" form-check col-md-12">
+          <input type="checkbox" ng-model="prospect.civil_state" >
+          <label class="form-check-label" >Casado</label>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-8  text-left" ng-if="prospect.civil_state">
+       
+          <div class="card ">
+            <div class="card-body">
+              <h5 class="card-title">Información del cónyuge </h5>
+                  <div class="row form-group">
+                    <div class="col-md-12">
+                      <label >Nombre:</label>
+                      <input ng-model="prospect.spouse.name" type="text" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col">
+                      <label >Apellido paterno:</label>
+                      <input ng-model="prospect.spouse.lastname_paterno" type="text" class="form-control" placeholder="">
+                    </div>
+                    <div class="col">
+                      <label >Apellido materno:</label>
+                      <input ng-model="prospect.spouse.lastname_materno" type="text" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col">
+                      <label >Email :</label>
+                      <input ng-model="prospect.spouse.mail" type="email" class="form-control" placeholder="ejemplo@rocektmail.com">
+                    </div>
+                    <div class="col">
+                      <label >Teléfono:</label>
+                      <input ng-model="prospect.spouse.phone" type="text" class="form-control" placeholder="">
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row form-group">
+        <div class=" form-check col-md-12">
+          <input type="checkbox" ng-model="prospect.is_father" >
+          <label class="form-check-label" >Hijos</label>
+        </div>
+        <hr>
+        <div class="col-md-2"></div>
+        <div class="col-md-8  text-left" ng-if="prospect.is_father">
+       
+          <div class="card ">
+            <div class="card-body">
+              <h5 class="card-title">Agregar hijo </h5>
+                  <div class="row form-group">
+                    <div class="col-md-12">
+                      <label >Nombre:</label>
+                      <input ng-model="temporal_son.name" type="text" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col">
+                      <label >Apellido paterno:</label>
+                      <input ng-model="temporal_son.lastname_paterno" type="text" class="form-control" placeholder="">
+                    </div>
+                    <div class="col">
+                      <label >Apellido materno:</label>
+                      <input ng-model="temporal_son.lastname_materno" type="text" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col">
+                      <label >Email :</label>
+                      <input ng-model="temporal_son.mail" type="email" class="form-control" placeholder="ejemplo@rocektmail.com">
+                    </div>
+                    <div class="col">
+                      <label >Teléfono:</label>
+                      <input ng-model="temporal_son.phone" type="text" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                  <button class="btn btn-success" ng-click="addSon()">Agregar</button>
+                  </br>
+                  <br>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" ng-repeat="son in prospect.sons">{{son.name}} {{son.lastname_paterno}} {{son.lastname_materno}} / {{son.mail}} / {{son.phone}} <i class="fas fa-times-circle" ng-click=deleteSon($index)></i></li>
+                    
+                  </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      
+      <div class="row form-group">
+        <div class="col-md-12"><center><h1>Gastos médicos</h1></center></div>
+        <div class="col-md-4">
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" ng-model="prospect.asma" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Asma</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" ng-model="prospect.motociclismo" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Motociclismo</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" ng-model="prospect.diabetes" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Diabetes</label>
+          </div>
+        </div>
+        <div class="col-md-4">       
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" ng-model="prospect.hpertencion">
+            <label class="form-check-label" for="exampleCheck1">Hipertencion</label>
+          </div>
+
+        </div>
+        <div class="col-md-4">
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" ng-model="prospect.tiroides">
+            <label class="form-check-label" for="exampleCheck1">Tiroides</label>
+          </div>
+
+        </div>
+        <div class="col-md-4">
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" ng-model="prospect.smoker">
+            <label class="form-check-label" >Fumador</label>
+          </div>
+        </div>
+
+
+      </div>
+      
+      <hr>
+      <div class="row form-group">
+        <div class="col-md-12"><center><h1>Referencias</h1></center>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-8  text-left" >
+       
+          <div class="card ">
+            <div class="card-body">
+              <h5 class="card-title">Agregar referencia </h5>
+                  <div class="row form-group">
+                    <div class="col-md-12">
+                      <label >Nombre:</label>
+                      <input ng-model="temporal_reference.name" type="text" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col">
+                      <label >Apellido paterno:</label>
+                      <input ng-model="temporal_reference.lastname_paterno" type="text" class="form-control" placeholder="">
+                    </div>
+                    <div class="col">
+                      <label >Apellido materno:</label>
+                      <input ng-model="temporal_reference.lastname_materno" type="text" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col">
+                      <label >Email :</label>
+                      <input ng-model="temporal_reference.mail" type="email" class="form-control" placeholder="ejemplo@rocektmail.com">
+                    </div>
+                    <div class="col">
+                      <label >Teléfono:</label>
+                      <input ng-model="temporal_reference.phone" type="text" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                  <button class="btn btn-success" ng-click="addReference()">Agregar</button>
+                  </br>
+                  <br>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" ng-repeat="ref in prospect.references">{{ref.name}} {{ref.lastname_paterno}} {{ref.lastname_materno}} / {{ref.mail}} / {{ref.phone}} <i class="fas fa-times-circle" ng-click=deleteRef($index)></i></li>
+                    
+                  </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+
+      
+      
+      
+      
+      
+      
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Inversión:</label>
+        <select class="form-control" ng-model="prospect.investment" >
+          <option>anual</option>
+          <option>mensual</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary" ng-click="insert($event)">Submit</button>
+    </form>
+    </div>
+  </div>
+</div>

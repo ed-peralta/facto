@@ -1,0 +1,41 @@
+<div class="card bg-light text-left" >
+  <!--<div class="card-header">Control de usuarios</div> -->
+  <div class="card-body ">
+    <h5 class="card-title">Control de Proveedores</h5>
+    <md-button class="md-primary md-raised" ng-click="showTabDialog($event)" id="dialog">
+      Agregar Proveedor
+    </md-button>
+    <div ng-if="status" id="status">
+    <b layout="row" layout-align="center center" class="md-padding">
+      {{status}}
+    </b>
+  </div>
+    <hr>
+    <table class="table  table-hover " dt-instance="dtInstance" dt-options="dtOptions"  datatable="ng" >
+      <thead>
+        <tr>
+
+          <th>Id</th>
+          <th>Proveedor</th>
+          <th>Corrreo</th>
+					<th>Contacto</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="provider in providers" >
+          <td class="details-control">{{ provider.provider_id }}</td>
+          <td>{{ provider.provider_name }}</td>
+
+          <td>{{ provider.provider_mail }}</td>
+					<td>{{ provider.provider_contact }}</td>
+					<td><button class="btn btn-primary" ng-click="showUpdateDialog($event,provider.provider_id)" class="edit"><i class="fas fa-edit" ></i></button></td>
+					<td><button class="btn btn-danger"  ng-click="showConfirm($event,provider.provider_id)" ><i class="fas fa-times"></i></button></td>
+				</tr>
+      </tbody>
+    </table>
+    <hr>
+
+  </div>
+</div>
